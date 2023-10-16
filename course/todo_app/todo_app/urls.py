@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'), # root-url
     path('addtask/',views.addTask,name='addTask'),
+    path('mark_as_done/<int:id>',views.mark_as_Done,name='mark_as_Done'),
+    path('undotask/<int:id>',views.UndoCompleteTask,name='undoTask'),
 ]

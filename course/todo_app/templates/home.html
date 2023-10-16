@@ -10,8 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+    <script src="https://kit.fontawesome.com/a3dda44210.js" crossorigin="anonymous"></script>
     <style>
         .form-control{
         padding: 1.375rem .75rem !important;
@@ -32,7 +32,7 @@
                     <div class="card-body">
                         {{t.task}}
                         <span style="position: relative; float: right;">
-                            <a class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
+                            <a href={% url 'mark_as_Done' t.id %} class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
                             <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             <a class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                         </span>
@@ -49,8 +49,11 @@
                 {% for c in Completed %}
                 <div class="card m-1">
                     <div class="card-body">
-                        <p class="card-text m-0">{{c.task}}<b>     Completed On: </b>{{c.last_modified|date:"M d Y"}}
-                    </div>
+                        <p class="card-text m-0">{{c.task}}<b>&emsp;Completed On: </b>{{c.last_modified|date:"M d Y"}}
+                            <span style="position: relative; float: right;">
+                                <a href={% url 'undoTask' c.id %} class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></a>
+                            </span>
+                     </div>
                 </div>
                 {%endfor%}
             </div>
