@@ -25,3 +25,22 @@ def UndoCompleteTask(request,id):
     task.status = False
     task.save()
     return redirect('home')
+
+def editTask(request,id):
+    """Edit task descriptions and due dates"""
+    edittask = get_object_or_404(todo_list,id=id)
+    if request.method == 'POST':
+        new_task = request.POST['edittask']
+        edittask.task = new_task
+        edittask.save()
+        return redirect('home')
+    else:
+        context = {'edit_task':edittask,}   
+        return render(request,'edit_task.html',context)
+
+def deleteTask(request,id):
+    """Delete an existing task"""
+    task = get_object_or_404(todo_list,id=id)
+    task.delete()
+    return redirect('home')
+

@@ -23,4 +23,6 @@ urlpatterns = [
     path('addtask/',views.addTask,name='addTask'),
     path('mark_as_done/<int:id>',views.mark_as_Done,name='mark_as_Done'),
     path('undotask/<int:id>',views.UndoCompleteTask,name='undoTask'),
+    path('edittask/<int:id>',views.editTask,name='editTask'),
+    path('deletetask/<int:id>',views.deleteTask,name='deleteTask'),
 ]
