@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from greatkart import views
 from store import views as store_views
+from carts import views as carts_views
 from django.conf.urls.static import static 
 from django.conf import settings 
 
@@ -26,4 +27,9 @@ urlpatterns = [
     path('store/',store_views.store, name='store'),
     path('store/<slug:category_slug>/',store_views.store,name='products_by_category'),
     path('store/<slug:category_slug>/<slug:product_slug>/',store_views.product_detail,name='product_detail'),
+    path('cart/', carts_views.cart, name='cart'),
+    path('cart/add_cart/<int:product_id>/', carts_views.add_cart,name='add_cart'),
+    path('cart/remove_cart/<int:product_id>/', carts_views.remove_cart, name='remove_cart'),
+    path('cart/remove_cart_product/<int:product_id>/', carts_views.remove_cart_product, name='remove_cart_product'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
