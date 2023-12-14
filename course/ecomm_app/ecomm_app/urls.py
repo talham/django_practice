@@ -30,7 +30,7 @@ urlpatterns = [
     path('store/search/', store_views.search, name='search'),
     path('cart/', carts_views.cart, name='cart'),
     path('cart/add_cart/<int:product_id>/', carts_views.add_cart,name='add_cart'),
-    path('cart/remove_cart/<int:product_id>/', carts_views.remove_cart, name='remove_cart'),
-    path('cart/remove_cart_product/<int:product_id>/', carts_views.remove_cart_product, name='remove_cart_product'),
+    path('cart/remove_cart/<int:product_id>/<int:cart_item_id>', carts_views.remove_cart, name='remove_cart'),
+    path('cart/remove_cart_product/<int:product_id>/<int:cart_item_id>', carts_views.remove_cart_product, name='remove_cart_product'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
