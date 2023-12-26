@@ -135,3 +135,18 @@ STATICFILES_DIRS = [
 # media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# custom message declaration
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+# SMTP configuration
+from dotenv import load_dotenv
+import os 
+EMAIL_HOST = os.getenv("email_host")
+EMAIL_PORT = os.getenv("email_port")
+EMAIL_HOST_USER = os.getenv("email_usr")
+EMAIL_HOST_PASSWORD = os.getenv("email_password")
+EMAIL_USE_TLS = True

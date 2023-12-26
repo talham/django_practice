@@ -18,12 +18,16 @@ from django.urls import path
 from greatkart import views
 from store import views as store_views
 from carts import views as carts_views
+from accounts import views as account_views
 from django.conf.urls.static import static 
 from django.conf import settings 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
+    path('accounts/register/',account_views.register,name='register'),
+    path('accounts/login/',account_views.login,name='login'),
+    path('accounts/logout/', account_views.logout, name='logout'),
     path('store/',store_views.store, name='store'),
     path('store/category/<slug:category_slug>/',store_views.store,name='products_by_category'),
     path('store/category/<slug:category_slug>/<slug:product_slug>/',store_views.product_detail,name='product_detail'),
