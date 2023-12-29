@@ -25,13 +25,22 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
+    #accounts
     path('accounts/register/',account_views.register,name='register'),
     path('accounts/login/',account_views.login,name='login'),
     path('accounts/logout/', account_views.logout, name='logout'),
+    path('accounts/activate/<uidb64>/<token>/', account_views.activate,name='activate'),
+    path('accounts/dashboard/',account_views.dashboard,name='dashboard'), 
+    path('accounts/',account_views.dashboard,name='dashboard'),
+    path('accounts/forgotPassword/', account_views.forgotPassword,name='forgotPassword'),
+    path('accounts/resetpassword_validate/<uidb64>/<token>/', account_views.resetpassword_validate,name='resetpassword_validate'),
+    path('accounts/resetPassword/', account_views.resetPassword,name='resetPassword'),
+    # store
     path('store/',store_views.store, name='store'),
     path('store/category/<slug:category_slug>/',store_views.store,name='products_by_category'),
     path('store/category/<slug:category_slug>/<slug:product_slug>/',store_views.product_detail,name='product_detail'),
     path('store/search/', store_views.search, name='search'),
+    # cart
     path('cart/', carts_views.cart, name='cart'),
     path('cart/add_cart/<int:product_id>/', carts_views.add_cart,name='add_cart'),
     path('cart/remove_cart/<int:product_id>/<int:cart_item_id>', carts_views.remove_cart, name='remove_cart'),
