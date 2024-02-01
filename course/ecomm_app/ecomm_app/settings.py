@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'carts',
+    'orders',
+    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +154,7 @@ EMAIL_HOST_USER = os.getenv("email_usr")
 EMAIL_HOST_PASSWORD = os.getenv("email_password")
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = os.getenv("email_usr")
+
+#paypal configuration
+PAYPAL_RECEIVER_EMAIL=os.getenv("paypal_receiver_email")
+PAYPAL_TEST = True
